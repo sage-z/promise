@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "paths": {
+      "@/*": ["app/components/*"],
+      "tools/*": ["app/tools/*"],
+      "hooks/*": ["app/hooks/*"],
+      "scss/*": ["app/scss/*"],
+      "core/*": ["app/core/*"],
+      "layouts/*": ["app/layouts/*"],
+      "service/*": ["app/service/*"],
+      "db/*": ["app/database/*"],
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": ["app/**/*"]
+}

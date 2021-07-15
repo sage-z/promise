@@ -1,0 +1,52 @@
+//
+// The Grid.css
+// --------------------------------------------------
+@import './variables.scss';
+
+.pane-group {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+.pane {
+  position: relative;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.pane-sm {
+  max-width: 220px;
+  min-width: 150px;
+
+  // border-right: 1px solid $border-color;
+
+  &:after {
+    height: 100%;
+    width: 1px;
+    content: '';
+    &:hover {
+      cursor: wait;
+    }
+  }
+  // &:first-child {
+  //   border-right: 0;
+  // }
+}
+
+.pane-mini {
+  width: 80px;
+  flex: none;
+}
+
+.pane-one-fourth {
+  width: 25%;
+  flex: none;
+}
+
+.pane-one-third {
+  width: 33.3%;
+}
