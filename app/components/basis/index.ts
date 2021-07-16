@@ -1,3 +1,3 @@
 export { DraggleLayout } from './DraggleLayout'
 export { Icon } from './Icon'
-export { Button } from './Button'
+export { Button } from './iconButton'

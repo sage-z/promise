@@ -1,44 +1,7 @@
-import * as React from 'react'
-import { Ref, forwardRef,  PropsWithChildren } from 'react'
-import { cx, css } from '@emotion/css'
-interface BaseProps {
-    className: string
-    [key: string]: unknown
-  }
+import Button from './button';
 
-  type OrNull<T> = T | null
+export { ButtonProps, ButtonShape, ButtonType } from './button';
+export { ButtonGroupProps } from './button-group';
+export { SizeType as ButtonSize } from '../config-provider/SizeContext';
 
-export const Button = forwardRef(
-    (
-      {
-        className,
-        active,
-        reversed,
-        ...props
-      }: PropsWithChildren<
-        {
-          active: boolean
-          reversed: boolean
-        } & BaseProps
-      >,
-      ref: Ref<OrNull<HTMLSpanElement>>
-    ) => (
-      <span
-        {...props}
-        ref={ref}
-        className={cx(
-          className,
-          css`
-            cursor: pointer;
-            color: ${reversed
-              ? active
-                ? 'white'
-                : '#aaa'
-              : active
-              ? 'black'
-              : '#ccc'};
-          `
-        )}
-      />
-    )
-  )
+export default Button;
