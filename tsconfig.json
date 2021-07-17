@@ -14,17 +14,11 @@
     "allowSyntheticDefaultImports": false,
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
-      "@/*": ["app/components/*"],
-      "tools/*": ["app/tools/*"],
-      "hooks/*": ["app/hooks/*"],
-      "scss/*": ["app/scss/*"],
-      "core/*": ["app/core/*"],
-      "layouts/*": ["app/layouts/*"],
-      "service/*": ["app/service/*"],
-      "db/*": ["app/database/*"],
+      "@/*": ["app/renderer/*"],
+      "main/*": ["app/main/*"],
       "*": ["node_modules/*"]
     }
   },
   "include": ["app/**/*"],
-  "exclude": ["app/components/basis/**/__tests__/*"]
+  "exclude": ["app/renderer/components/**/__tests__/*"]
 }

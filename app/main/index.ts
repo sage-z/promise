@@ -1,9 +1,9 @@
 import { app, BrowserWindow } from 'electron';
-import { Books } from '../database/store';
+import { Books } from './store';
 import { createWindow } from './createWindow'
 import './bootstrap'
 
-if (require('electron-squirrel-startup')) { 
+if (require('electron-squirrel-startup')) {
   app.quit();
 }
 const windows = [];

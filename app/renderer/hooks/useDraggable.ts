@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { off, on } from 'tools/dom';
+import { off, on } from '@/tools/dom';
 import useMount from './useMount';
 
 /**

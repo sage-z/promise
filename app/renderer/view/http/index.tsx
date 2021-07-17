@@ -4,10 +4,10 @@
 
 import * as React from 'react'
 import { useRef, useState, useEffect } from "react";
-import useDraggable from "hooks/useDraggable";
+import useDraggable from "@/hooks/useDraggable";
 import styles from "./index.scss";
 import { cx, css } from "@emotion/css";
-import { queryBooks } from "service/books";
+import { queryBooks } from "@/service/books";
 // import { Books } from '../../database/store'
 
 export function DraggleLayout({
@@ -43,7 +43,7 @@ export function DraggleLayout({
       width: 1,
       height: "100%",
       pointerEvents: "none",
-      background: "rgb(77, 81, 100)",
+      background: "rgb(200, 200, 200)",
     }}
   />
 
@@ -149,7 +149,10 @@ export function DraggleLayout({
             onClick={() => setShowProjectList(false)}
           ></div>
         ) : null}
-        {children[1] ? children[1] : <div></div> }
+        {children[1] ? React.cloneElement(
+	children[1],
+	{width: containerWidth - position.x }
+) : <div></div> }
       </div>
     </div>
   );

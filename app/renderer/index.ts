@@ -2,7 +2,8 @@
 import { getDatabase } from './database';
 import render from './view/App';
 
-import '../public/css/font.css'
+import './public/css/font.css'
+import './public/css/antd.min.css'
 
 (async function run() {
 

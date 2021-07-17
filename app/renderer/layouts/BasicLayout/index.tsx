@@ -1,22 +1,23 @@
 import * as React from 'react'
 import { Component, useState, useEffect } from "react";
 import {render} from 'react-dom';
-import Footer from "./Footer";
-import BasicLayout from "layouts/BasicLayout";
-import Sidebar from "./Sidebar";
-import Tabpane from "./Tabpane";
-import Navigation from './Navigation';
-import baseStyles from "../scss/base.scss";
-import barsStyles from "../scss/bars.scss";
-import gridStyles from "../scss/grid.scss";
+import Footer from "../components/Footer";
+// import BasicLayout from "layouts/BasicLayout";
+// import Sidebar from "./Sidebar";
+// import Tabpane from "./Tabpane";
+import Navigation from '../components/Navigation';
+import baseStyles from "@/scss/base.scss";
+import barsStyles from "@/scss/bars.scss";
+import gridStyles from "@/scss/grid.scss";
 
-
-
-
-const App = () => {
-  // const [width, setWidth] = useState(50);
-
-  const width = document.body.clientWidth -50
+export default ({children}) => {
+  const [width, setWidth] = useState(document.body.clientWidth -50);
+  useEffect(() => {
+    window.onresize = () => {
+      setWidth(document.body.clientWidth -50)
+    }
+  },[]);
+  // const width = document.body.clientWidth -50
   return (
     <div className={baseStyles.window}>
       <header
@@ -27,23 +28,18 @@ const App = () => {
       <div className={baseStyles["window-content"]}>
         <Navigation />
         <div className={gridStyles["pane-group"]} style={{left:'50px'}}>
-          <BasicLayout
+            {children}
+          {/* <BasicLayout
             containerWidth={width}
             containerHeight={"100%"}
             initLeftWidth={280}
           >
             <Sidebar />
             <Tabpane />
-          </BasicLayout>
+          </BasicLayout> */}
         </div>
       </div>
       <Footer />
     </div>
   );
 };
-
-
-export default function AppRender() {
-  render(<App />, document.getElementById("root"));
-//   ReactDOM.render(<App />, document.body);
-}

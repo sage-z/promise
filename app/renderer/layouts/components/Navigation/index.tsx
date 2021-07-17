@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useRef, useState } from 'react';
-import {Icon, Button} from "@/basis";
+import {Icon, Button} from "@/components";
 import { cx, css } from '@emotion/css'
 
 export default ({

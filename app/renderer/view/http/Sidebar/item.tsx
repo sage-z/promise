@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from "react";
 import styles from "./index.scss";
-import { Icon } from "@/basis";
+import { Icon } from "@/components";
 import { cx, css } from '@emotion/css'
 
 const Item = ({data, deep=0 }:any) => {

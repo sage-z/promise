@@ -3,7 +3,7 @@
 // 选用自 https://github.com/Lemonreds/react-components/blob/0a8955eabdcb44fcfce82f480f434bf294947b5a/src/components/DraggleLayout/DraggleLayout.jsx
 import * as React from 'react'
 import { useRef, useState } from 'react';
-import useDraggable from 'hooks/useDraggable';
+import useDraggable from '@/hooks/useDraggable';
 import styles from './index.scss';
 
 export function DraggleLayout({
