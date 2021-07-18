@@ -8,31 +8,37 @@ import useDraggable from "@/hooks/useDraggable";
 import styles from "./index.scss";
 import { cx, css } from "@emotion/css";
 import { queryBooks } from "@/service/books";
-// import { Books } from '../../database/store'
+import Sidebar from './Sidebar'
+import Tabpane from './Tabpane'
+import { fromEvent } from 'rxjs'
+
 
 export function DraggleLayout({
-  children, // 两列布局
-  max = Infinity, // 左侧最大宽度
-  containerWidth = 0, // 容器宽度
-  containerHeight = 0, // 容器高度
-  initLeftWidth = 0, // 初始左侧容器宽度
-  onWidthChange = (width: number | string) => width, // 左侧容器高度变化
+  max = 500, // 左侧最大宽度
+  containerHeight = '100%', // 容器高度
+  initLeftWidth = 300, // 初始左侧容器宽度
 }: any) {
   const ref = useRef(null);
 
   const [showProjectList, setShowProjectList] = useState(false);
+  const [containerWidth, setWidth] = useState(1230);
   const [position, setPosition] = useState({ x: initLeftWidth, y: 0 });
+
+  useEffect(() => {
+    setWidth(document.body.clientWidth - 50)
+    let resize = fromEvent(window, 'resize');
+    let o = resize.subscribe(x => setWidth(document.body.clientWidth -50));
+    return o.unsubscribe
+  },[]);
 
   const [props] = useDraggable(
     ref,
     {
       onMouseMove: ({ x, y }: any) => {
         let _x = x;
-        console.log(containerWidth);
         // if (_x < min) _x = min;
         if (_x < 50) _x = 0;
         if (_x > max) _x = max;
-        if (onWidthChange) onWidthChange(_x);
         setPosition({ x: _x, y });
       },
     },
@@ -47,23 +53,7 @@ export function DraggleLayout({
     }}
   />
 
-  // const useObservable = (observable, setter) => {
-    
-  // };
   const [bookList, setBookList] = useState([]);
-
-  useEffect(() => {
-    queryBooks()
-    api.get_books()
-    .then(data => setBookList(data))
-    
-    // console.log('Books.store', Books.store)
-    // let subscription = queryBooks().subscribe((result:any[]) => {
-    //   // setBookList(result);
-    //   console.log(result)
-    // });
-    // return () => subscription.unsubscribe();
-  }, []);
 
   return (
     <div
@@ -115,8 +105,6 @@ export function DraggleLayout({
                 cursor: pointer;
               `}
               onClick={() => {
-                // api.get_books().then(data => console.log(data))
-                console.log(bookList)
                 setShowProjectList(true)}}
             ></div>
             <div
@@ -124,7 +112,7 @@ export function DraggleLayout({
                 height: 100%;
               `}
             >
-              {children[0]}
+              <Sidebar />
             </div>
           </div>
         )}
@@ -149,10 +137,7 @@ export function DraggleLayout({
             onClick={() => setShowProjectList(false)}
           ></div>
         ) : null}
-        {children[1] ? React.cloneElement(
-	children[1],
-	{width: containerWidth - position.x }
-) : <div></div> }
+        <Tabpane width={containerWidth - position.x} />
       </div>
     </div>
   );

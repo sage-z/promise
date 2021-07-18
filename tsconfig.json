@@ -16,6 +16,7 @@
     "paths": {
       "@/*": ["app/renderer/*"],
       "main/*": ["app/main/*"],
+      "libs/*": ["app/libs/*"],
       "*": ["node_modules/*"]
     }
   },

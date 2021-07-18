@@ -11,13 +11,6 @@ import barsStyles from "@/scss/bars.scss";
 import gridStyles from "@/scss/grid.scss";
 
 export default ({children}) => {
-  const [width, setWidth] = useState(document.body.clientWidth -50);
-  useEffect(() => {
-    window.onresize = () => {
-      setWidth(document.body.clientWidth -50)
-    }
-  },[]);
-  // const width = document.body.clientWidth -50
   return (
     <div className={baseStyles.window}>
       <header
@@ -29,14 +22,6 @@ export default ({children}) => {
         <Navigation />
         <div className={gridStyles["pane-group"]} style={{left:'50px'}}>
             {children}
-          {/* <BasicLayout
-            containerWidth={width}
-            containerHeight={"100%"}
-            initLeftWidth={280}
-          >
-            <Sidebar />
-            <Tabpane />
-          </BasicLayout> */}
         </div>
       </div>
       <Footer />

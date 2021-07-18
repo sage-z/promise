@@ -8,7 +8,7 @@ import Store = require('electron-store');
 //  }
 
 export const Books = new Store({
-    name: 'books',
-    encryptionKey: 'calends',
+    name: 'bookss',
+    encryptionKey: 'promise',
     defaults: { books: []}
 });

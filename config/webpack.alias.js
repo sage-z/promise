@@ -6,6 +6,7 @@ function resolve (dir) {
 
 module.exports = {
     "@": resolve("app/renderer"),
-    "main": resolve("app/main")
+    "main": resolve("app/main"),
+    "libs": resolve("app/libs")
 };
   

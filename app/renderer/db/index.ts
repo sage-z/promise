@@ -16,7 +16,7 @@ import { RxDBQueryBuilderPlugin } from 'rxdb/plugins/query-builder';
 addRxPlugin(RxDBQueryBuilderPlugin);
 
 
-import bookSchema from './books'
+import requestSchema from './request'
 
 
 // dev
@@ -33,13 +33,13 @@ async function createDatabase(name: string) {
     // then we also need the leader election
 
     const db = await createRxDatabase({
-        name: 'calends_' + name,
+        name: 'promise_' + name,
         adapter: 'idb',
         password: 'myLongAndStupidPassword'
     });
 
     await db.addCollections({
-        books: { schema: bookSchema }
+        request: { schema: requestSchema }
     });
     return db;
 }

@@ -1,26 +1,17 @@
 import * as React from "react";
-import { useState } from "react";
-// import Tabs from "./Tabs";
+import { useState, useEffect } from "react";
 import Tabs from "@/components/tabs";
-import axios from "axios";
+import axios from "@/libs/axios";
+import { AxiosResponse } from "axios";
+
 import { DraggleLayout } from "@/components";
 const { TabPane } = Tabs;
-import { Input, Select,Collapse } from 'antd';
-import { SettingOutlined } from '@ant-design/icons';
-const { Search } = Input
-const { Panel } = Collapse;
+import { Input, Select } from "antd";
+import RequestPanel from './RequestPanel'
+import ResponsePanel from './ResponsePanel'
+const { Search } = Input;
 const { Option } = Select;
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
-const selectBefore = (
-  <Select defaultValue="GET" className="select-before">
-    <Option value="GET">GET</Option>
-    <Option value="POST">POST</Option>
-  </Select>
-);
+
 const initialPanes = [
   { title: "Tab 1", content: "Content of Tab 1", key: "1" },
   { title: "Tab 2", content: "Content of Tab 2", key: "2" },
@@ -31,15 +22,90 @@ const initialPanes = [
     closable: false,
   },
 ];
+
+
+// 响应类型分 文件  网页   json  xml
+// interface IRequest {
+//   headers :{
+//     general: any
+//     response: any
+//     request: any
+//   }
+//   response: string
+//   timing: any
+//   cookies: any
+// }
+
+export class Request  {
+  headers = {
+    general: [],
+    response: [],
+    request: []
+  };
+  response: string = '';
+  timing: object = {};
+  cookies: object = {};
+
+  constructor(res?: AxiosResponse){
+    if(res){
+      for (const key in res.config) {
+        if (Object.prototype.hasOwnProperty.call(res.config, key)) {
+          const element = res.config[key];
+          this.headers.general.push({key, value: element+""})
+        }
+      }
+
+
+      for (const key in res.headers) {
+        if (Object.prototype.hasOwnProperty.call(res.headers, key)) {
+          const element = res.headers[key];
+          this.headers.response.push({key, value: element+""})
+        }
+      }
+      // Preview
+      this.response=  res.data,
+      // Initator,
+      this.timing= {},
+      this.cookies={}
+    }
+  }
+
+
+  isEmpty() {
+      return !this.response
+  }
+}
+
+
+
 export default (props) => {
 
-  // console.log(props)
+  let [activeApis, setActiveApis] = useState(initialPanes);
   let [activeKey, setActiveKey] = useState(initialPanes[0].key);
-  let [panes, setPanes] = useState(initialPanes);
+  const api = activeApis.filter(item => item.key===activeKey).length?activeApis.filter(item => item.key===activeKey)[0]:{}
+  const [request, setRequest] = useState<Request[]>([new Request()]);
+
+
+  const selectBefore = (
+    <Select defaultValue="GET" className="select-before">
+      <Option value="GET">GET</Option>
+      <Option value="POST">POST</Option>
+    </Select>
+  );
 
   const onChange = (activeKey) => {
     setActiveKey(activeKey);
-    axios.get("http://www.baidu.com").then((data) => console.log(data));
+  };
+
+  const onSearch = (value) => {
+    console.log(axios)
+    axios({url: "http://www.baidu.com"})
+    .then((data) => {
+      console.log(data)
+      let r = [...request]
+      r.push(new Request(data))
+      setRequest(r)
+    });
   };
 
   const onEdit = (targetKey, action) => {
@@ -54,30 +120,29 @@ export default (props) => {
       default:
         break;
     }
-    // this[action](targetKey);
   };
 
   const add = () => {
     const activeKey = `newTab${+new Date()}`;
-    const newPanes = [...panes];
+    const newPanes = [...activeApis];
     newPanes.push({
       title: "New Tab",
       content: "Content of new Tab",
       key: activeKey,
     });
     setActiveKey(activeKey);
-    setPanes(newPanes);
+    setActiveApis(newPanes);
   };
 
   const remove = (targetKey) => {
     let newActiveKey = activeKey;
     let lastIndex;
-    panes.forEach((pane, i) => {
+    activeApis.forEach((pane, i) => {
       if (pane.key === targetKey) {
         lastIndex = i - 1;
       }
     });
-    const newPanes = panes.filter((pane) => pane.key !== targetKey);
+    const newPanes = activeApis.filter((pane) => pane.key !== targetKey);
     if (newPanes.length && newActiveKey === targetKey) {
       if (lastIndex >= 0) {
         newActiveKey = newPanes[lastIndex].key;
@@ -86,7 +151,7 @@ export default (props) => {
       }
     }
     setActiveKey(activeKey);
-    setPanes(newPanes);
+    setActiveApis(newPanes);
   };
 
   return (
@@ -99,78 +164,34 @@ export default (props) => {
         onEdit={onEdit}
         type="editable-card"
       >
-        {panes.map((pane) => (
-          <TabPane tab={pane.title} key={pane.key}></TabPane>
+        {activeApis.map((pane) => (
+          <TabPane tab={pane.title} key={pane.key} closable={activeApis.length>1?true:false}></TabPane>
         ))}
       </Tabs>
-
-      {/* <div> */}
-        {/* <select>
-          <option>GET</option>
-          <option>POST</option>
-          <option>DETELE</option>
-          <option>asdfadf</option>
-        </select>
-        <input></input>
-        <button onClick={() => console.log(2342)}>send</button> */}
-        <Search addonBefore={selectBefore}  enterButton="Send" style={{ width:'90%', margin: "0 auto 10px"}} />
-        {/* </div> */}
-          <DraggleLayout
-            containerWidth={props.width}
-            containerHeight={"100%"}
-            initLeftWidth={Math.round(props.width/2)}
-            handler={<div
-              style={{
-                width: 1,
-                height: "100%",
-                pointerEvents: "none",
-                background: "rgb(200, 200, 200)",
-              }}
-            />}
-          >
-            <Tabs
-              animated={false}
-              onChange={onChange}
-              activeKey={activeKey}
-              centered
-              size="small"
-            >
-              <TabPane tab="Description" key="Description"></TabPane>
-              <TabPane tab="Headers" key="Headers"></TabPane>
-              <TabPane tab="Params" key="Params"></TabPane>
-              <TabPane tab="Body" key="Body"></TabPane>
-              <TabPane tab="Auth" key="Auth"></TabPane>
-              <TabPane tab="Options" key="Options"></TabPane>
-              <TabPane tab="Pre-request Script" key="Script"></TabPane>
-              <TabPane tab="Tests" key="Tests"></TabPane>
-            </Tabs>
-            <Tabs
-              animated={false}
-              onChange={onChange}
-              activeKey={activeKey}
-              centered
-              size="small"
-            >
-              <TabPane tab="Headers" key="Headers">
-
-  <Collapse defaultActiveKey={['1']} ghost>
-    <Panel header="General" key="1">
-      <p>{text}</p>
-    </Panel>
-    <Panel header="Response Headers" key="2">
-      <p>{text}</p>
-    </Panel>
-    <Panel header="Request Headers" key="3">
-      <p>{text}</p>
-    </Panel>
-  </Collapse>
-              </TabPane>
-              <TabPane tab="Preview" key="Preview"></TabPane>
-              <TabPane tab="Response" key="Response"></TabPane>
-              <TabPane tab="Initator" key="Initator"></TabPane>
-              <TabPane tab="Timing" key="Timing"></TabPane>
-            </Tabs>
-          </DraggleLayout>
+      <Search
+        addonBefore={selectBefore}
+        onSearch={onSearch}
+        enterButton="Send"
+        style={{ width: "90%", margin: "0 auto 10px" }}
+      />
+      <DraggleLayout
+        containerWidth={props.width}
+        containerHeight={"100%"}
+        initLeftWidth={Math.round(props.width / 2)}
+        handler={
+          <div
+            style={{
+              width: 1,
+              height: "100%",
+              pointerEvents: "none",
+              background: "rgb(200, 200, 200)",
+            }}
+          />
+        }
+      >
+        <RequestPanel />
+        <ResponsePanel request={request} />
+      </DraggleLayout>
     </>
   );
 };

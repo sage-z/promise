@@ -1,5 +1,5 @@
 
-import { getDatabase } from './database';
+import { getDatabase } from './db';
 import render from './view/App';
 
 import './public/css/font.css'
