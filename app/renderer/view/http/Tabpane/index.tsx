@@ -29,7 +29,7 @@ const initialPanes = [
 //   headers :{
 //     general: any
 //     response: any
-//     request: any
+//     requests: any
 //   }
 //   response: string
 //   timing: any
@@ -48,9 +48,10 @@ export class Request  {
 
   constructor(res?: AxiosResponse){
     if(res){
-      for (const key in res.config) {
-        if (Object.prototype.hasOwnProperty.call(res.config, key)) {
-          const element = res.config[key];
+      const obj = JSON.parse(JSON.stringify(res.config))
+      for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          const element = obj[key];
           this.headers.general.push({key, value: element+""})
         }
       }
@@ -83,28 +84,42 @@ export default (props) => {
   let [activeApis, setActiveApis] = useState(initialPanes);
   let [activeKey, setActiveKey] = useState(initialPanes[0].key);
   const api = activeApis.filter(item => item.key===activeKey).length?activeApis.filter(item => item.key===activeKey)[0]:{}
-  const [request, setRequest] = useState<Request[]>([new Request()]);
+  const [requests, setRequests] = useState<Request[]>([new Request()]);
 
 
+  let [method, setMethod] = useState('GET');
+  const onMethodsChange=(value)=>{
+    setMethod(value)
+    console.log(value)
+  }
   const selectBefore = (
-    <Select defaultValue="GET" className="select-before">
+    <Select defaultValue="GET" onChange={onMethodsChange} className="select-before">
       <Option value="GET">GET</Option>
       <Option value="POST">POST</Option>
     </Select>
   );
 
+
+
   const onChange = (activeKey) => {
     setActiveKey(activeKey);
   };
 
-  const onSearch = (value) => {
-    console.log(axios)
-    axios({url: "http://www.baidu.com"})
+  const onSearch = (value="http://www.baidu.com") => {
+    if(value==""){
+      console.log("空的")
+      return 
+    }
+    if(value.search(/(http|https):\/\/([\w.]+\/?)\S*/i)!==0){
+      value="http://"+value
+    }
+    console.log(value, method)
+    axios({url: value, method })
     .then((data) => {
       console.log(data)
-      let r = [...request]
+      let r = [...requests]
       r.push(new Request(data))
-      setRequest(r)
+      setRequests(r)
     });
   };
 
@@ -190,7 +205,7 @@ export default (props) => {
         }
       >
         <RequestPanel />
-        <ResponsePanel request={request} />
+        <ResponsePanel request={requests.length?requests[requests.length-1]:null} />
       </DraggleLayout>
     </>
   );

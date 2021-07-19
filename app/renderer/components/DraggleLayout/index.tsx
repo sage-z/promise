@@ -61,7 +61,7 @@ export function DraggleLayout({
       </div>
       <div
         className={styles.right}
-        style={{ width: containerWidth - position.x }}
+        style={{ width: containerWidth - position.x}}
       >
         {children[1]?children[1]:null}
       </div>

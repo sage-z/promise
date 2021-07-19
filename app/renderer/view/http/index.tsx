@@ -15,19 +15,23 @@ import { fromEvent } from 'rxjs'
 
 export function DraggleLayout({
   max = 500, // 左侧最大宽度
-  containerHeight = '100%', // 容器高度
+  // containerHeight = '100%', // 容器高度
   initLeftWidth = 300, // 初始左侧容器宽度
 }: any) {
   const ref = useRef(null);
 
   const [showProjectList, setShowProjectList] = useState(false);
   const [containerWidth, setWidth] = useState(1230);
+  const [containerHeight, setHeight] = useState("100%");
   const [position, setPosition] = useState({ x: initLeftWidth, y: 0 });
 
   useEffect(() => {
     setWidth(document.body.clientWidth - 50)
     let resize = fromEvent(window, 'resize');
-    let o = resize.subscribe(x => setWidth(document.body.clientWidth -50));
+    let o = resize.subscribe(x => {
+      setWidth(document.body.clientWidth -50)
+      // setHeight(document.body.clientHeight-44)
+    });
     return o.unsubscribe
   },[]);
 
