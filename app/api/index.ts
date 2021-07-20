@@ -1,6 +1,7 @@
 
 const { contextBridge, ipcRenderer } = require('electron')
 import books from './books'
+import { Books } from 'main/store'
 
 const Api = {
   getProjectName: async (callback) => {
@@ -12,6 +13,7 @@ const Api = {
       })
       
   },
+  Books,
   ...books
 }
 

@@ -14,8 +14,10 @@ export const createWindow = (name?: string): BrowserWindow => {
       titleBarStyle: 'hidden',
       backgroundColor: '#2e2c29',
       webPreferences: {
+          devTools: is.development,
           preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-          webSecurity: false
+          webSecurity: false,
+          allowRunningInsecureContent: false
       }
     });
   

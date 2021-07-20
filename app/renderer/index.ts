@@ -14,6 +14,8 @@ import './public/css/antd.min.css'
     await getDatabase( bookname?bookname:'common' );
 
     // 初始化插件
+    // api.Books.set("hhh","add")
+    // console.log(api.Books.store)
 
 
     render()
