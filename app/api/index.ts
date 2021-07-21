@@ -1,9 +1,9 @@
 
 const { contextBridge, ipcRenderer } = require('electron')
-import books from './books'
-import { Books } from 'main/store'
+import local from './local'
+// import { Books } from 'main/store'
 
-const Api = {
+const api = {
   getProjectName: async (callback) => {
       return new Promise((resolve,reject)=>{
           ipcRenderer.once('getProjectName', function(event, params){
@@ -13,10 +13,12 @@ const Api = {
       })
       
   },
-  Books,
-  ...books
+  local
 }
 
+
+
+
 contextBridge.exposeInMainWorld(
-  'api', Api
+  'api', api
 )

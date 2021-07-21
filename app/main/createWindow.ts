@@ -26,11 +26,6 @@ export const createWindow = (name?: string): BrowserWindow => {
     //     win.show();
     // })
   
-    // todo 暂时方案
-    // win.on('resize', () => {
-    //   win.reload();
-    // })
-  
     win.webContents.on('did-finish-load', () => {
       win.webContents.send('getProjectName', name);
     })

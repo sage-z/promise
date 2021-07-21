@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { Books } from './store';
+import Store = require("electron-store");
 import { createWindow } from './createWindow'
 import './bootstrap'
 
@@ -9,9 +9,20 @@ if (require('electron-squirrel-startup')) {
 const windows = [];
 
 app.on('ready', async ()=>{
-  console.log('Books.store', Books.store)
-  let win  = createWindow()
-  windows.push(win);
+  const store = new Store({ name:'cache', encryptionKey:'promise'})
+  const activeWindow : string[] = store.get('activeWindow', []) as string[]
+  console.log('activeWindow', activeWindow)
+  if(activeWindow.length){
+    for (let index = 0; index < activeWindow.length; index++) {
+      const element = activeWindow[index];
+      let win  = createWindow(element)
+      windows.push(win);
+    }
+
+  } else{
+    let win  = createWindow()
+    windows.push(win);
+  }
 
 });
 
