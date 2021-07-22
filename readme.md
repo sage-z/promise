@@ -24,10 +24,24 @@
 
 ## 设计理念
 消灭文档
+no server
 
-## UI 参考
-[Photon](http://photonkit.com/)
-[antd](https://ant.design/)
-[Material UI](https://github.com/material-components)
-git@github.com:metadevpro/openapi3-ts.git
+##  参考
+### UI
+Photon http://photonkit.com/
+antd https://ant.design/
+Material UI https://github.com/material-components
+### 标准
+openapi3-ts https://github.com/metadevpro/openapi3-ts
+OpenAPI-Specification https://github.com/OAI/OpenAPI-Specification
+json-schema http://json-schema.org/
+### 产品
+YApi https://github.com/YMFE/yapi
+eolinker https://www.eolinker.com
+Postman https://www.getpostman.com
+Paw https://paw.cloud
+redoc https://github.com/Redocly/redoc
+apiDoc https://apidocjs.com
+Apifox https://www.apifox.cn
+
 ## 加入开发
