@@ -70,6 +70,7 @@
     "memdown": "^6.0.0",
     "mockjs": "^1.1.0",
     "moment": "^2.29.1",
+    "mousetrap": "^1.6.5",
     "pouchdb-adapter-idb": "^7.2.2",
     "pouchdb-adapter-leveldb": "^7.2.2",
     "pouchdb-adapter-memory": "^7.2.2",

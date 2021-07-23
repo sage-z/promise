@@ -2,7 +2,7 @@
 
 一个接口设计管理、调试测试、定义分发工具
 
-![You know,](./docs/youknow.jpg)
+![You know,](./app/renderer/view/welcome/youknow.jpg)
 
 愿在数据对接的路上，多些真诚，少些套路
 
