@@ -69,10 +69,7 @@ export default class Notice extends Component<NoticeProps> {
     );
     const node = (
       <div
-        className={classNames(componentClass, className, //{
-        //   [`${componentClass}-closable`]: closable,
-        // }
-        )}
+        className={classNames(componentClass, className)}
         style={style}
         // onMouseEnter={this.clearCloseTimer}
         // onMouseLeave={this.startCloseTimer}
@@ -80,11 +77,6 @@ export default class Notice extends Component<NoticeProps> {
         {...dataOrAriaAttributeProps}
       >
         <div className={`${componentClass}-content`}>{children}</div>
-        {/* {closable ? (
-          <a tabIndex={0} onClick={this.close} className={`${componentClass}-close`}>
-            {closeIcon || <span className={`${componentClass}-close-x`} />}
-          </a>
-        ) : null} */}
       </div>
     );
 

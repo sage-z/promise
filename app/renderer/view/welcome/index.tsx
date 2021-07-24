@@ -3,20 +3,9 @@ import { useState } from 'react'
 import { render } from 'react-dom'
 import EmptyLayout from '@/layouts/EmptyLayout'
 import banner from './youknow.jpg'
-import command from '@/components/command/command'
 
-let notification: any = null;
 
 const App = () => {
-  // const [ component, setComponent ] = useState(Http)
-  
-  setTimeout(()=>command.newInstance( {}, ins => notification = ins),1000)
-  setTimeout(()=>notification.notice({
-    content: <span>simple show {String(Date.now()).slice(-5)}</span>,
-    onClose() {
-      console.log('simple close');
-    },
-  }),3000)
 
   return (
     <EmptyLayout title="welcome">

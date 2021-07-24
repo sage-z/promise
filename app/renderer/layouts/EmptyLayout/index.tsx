@@ -5,7 +5,6 @@ import * as React from 'react'
 // import BasicLayout from "layouts/BasicLayout";
 // import Sidebar from "./Sidebar";
 // import Tabpane from "./Tabpane";
-import Command from '@/components/command';
 import baseStyles from "@/scss/base.scss";
 import barsStyles from "@/scss/bars.scss";
 // import gridStyles from "@/scss/grid.scss";
@@ -13,7 +12,6 @@ import barsStyles from "@/scss/bars.scss";
 export default ({children, title}) => {
   return (
     <div className={baseStyles.window}>
-        <Command />
       <header
         className={`${barsStyles.toolbar} ${barsStyles["toolbar-header"]}`}
       >
