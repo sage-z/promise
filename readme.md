@@ -44,4 +44,11 @@ redoc https://github.com/Redocly/redoc
 apiDoc https://apidocjs.com
 Apifox https://www.apifox.cn
 
-## 加入开发
+## 捐助
+
+### 加入开发
+
+### 帮助宣传及转载
+
+### 现金捐助
+捐助的钱将被用来上Mac App Storre

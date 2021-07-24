@@ -7,6 +7,9 @@ import renderWelcome from './view/welcome'
 import Mousetrap from 'mousetrap';
 import './public/css/font.css'
 import './public/css/antd.min.css'
+import command from '@/components/command/command'
+
+let notification: any = null;
 
 
 Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); });
@@ -24,6 +27,8 @@ Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); }
     console.log('window', window)
     // 获取初始化配置
     const name = await api.getProjectName();
+
+    // command.newInstance( {}, ins => notification = ins)
     if(name){
         initRenderer(name)
     } else {
