@@ -10,3 +10,6 @@ export default async (name) => {
     renderApp()
 
 }
+
+
+// 导航图标 全局任务  视图  持久化文件结构

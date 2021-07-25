@@ -11,7 +11,9 @@ import command from '@/components/command'
 
 command.initCommand()
 
-Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); });
+Mousetrap.bind('command+shift+k', function() {
+    
+});
 
 (async function run() {
     console.log('api', api)
@@ -23,7 +25,6 @@ Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); }
         initRenderer(name)
     } else {
         renderWelcome();
-        // setInterval(()=>initRenderer('test'), 6000)
     }
 
 })();
