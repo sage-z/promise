@@ -7,8 +7,7 @@ import Store = require('electron-store');
 //     }
 //  }
 
-export const globalConfig = new Store({
-    encryptionKey: 'promise',
+export const userConfig = new Store({
 });
 
 export const repositoryConfig = new Store({

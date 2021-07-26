@@ -34,6 +34,6 @@ const App = () => {
   );
 };
 
-export default function AppRender() {
+export default function () {
   render(<App />, document.getElementById("root"));
 }

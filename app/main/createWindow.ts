@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import {is} from 'electron-util';
-declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
-declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+import Store = require("electron-store");
 
 export const createWindow = (name?: string): BrowserWindow => {
     const win = new BrowserWindow({
@@ -25,10 +24,26 @@ export const createWindow = (name?: string): BrowserWindow => {
     // win.on('ready-to-show',()=>{
     //     win.show();
     // })
+
+
+  const store = new Store({ name:'cache', encryptionKey:'promise'})
+  const activeWindow : string[] = store.get('activeWindow', []) as string[]
   
     win.webContents.on('did-finish-load', () => {
+      if(!activeWindow.includes(name)){
+        activeWindow.push(name)
+        store.set('activeWindow', activeWindow)
+      }
+
       win.webContents.send('getProjectName', name);
     })
+
+    win.on('closed', ()=>{
+      store.set('activeWindow', activeWindow.filter(item => item !== name))
+    })
+
+    
+
     
     
     if (is.development){

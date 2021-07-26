@@ -1,10 +1,16 @@
 
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron');
+const fs = require("fs")
 import local from './local'
+import repository from './repository'
 // import { Books } from 'main/store'
+let cache = {
+  path: ""
+}
 
-const api = {
+let api = {
   getProjectName: async (callback) => {
+    // console.log(fs)
       return new Promise((resolve,reject)=>{
           ipcRenderer.once('getProjectName', function(event, params){
               if(callback) callback(params);
@@ -13,7 +19,20 @@ const api = {
       })
       
   },
-  local
+  getConfig:()=>{
+
+  },
+  repository: {
+    getAll: ()=>{},
+    init: ()=>repository.init(),
+    open: ()=>{},
+    clone: ()=>{},
+  },
+  local: {
+    set: ()=> {
+      return name
+    }
+  }
 }
 
 

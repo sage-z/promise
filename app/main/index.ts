@@ -23,7 +23,6 @@ app.on('ready', async ()=>{
     let win  = createWindow()
     windows.push(win);
   }
-
 });
 
 app.on('window-all-closed', () => {

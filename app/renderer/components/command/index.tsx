@@ -8,12 +8,6 @@ let notification: any = null;
 export const initCommand = () : void => {
     // command.newInstance( {}, ins => notification = ins)
 
-    command.newInstance( {}, ins => console.log(ins))
-    command.newInstance( {}, ins => console.log(ins))
-    command.newInstance( {}, ins => console.log(ins))
-    command.newInstance( {}, ins => console.log(ins))
-    command.newInstance( {}, ins => console.log(ins))
-    command.newInstance( {}, ins => console.log(ins))
 }
 
 export const registeredCommand = () => {
