@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { render } from 'react-dom'
 import EmptyLayout from '@/layouts/EmptyLayout'
 import banner from './youknow.jpg'
-
+import command from '@/components/command'
 
 const App = () => {
 
@@ -18,8 +18,9 @@ const App = () => {
                 <h1>Promise</h1>
 
                 <h3>Start</h3>
-                <h5><a onClick={()=>console.log("asdf")}>新建项目</a></h5>
-                <a onClick={()=>console.log("2121323")}>新建项目</a>
+                <h5><a onClick={()=>command.openPanel("repository create ")}>新建</a></h5>
+                <a onClick={()=>console.log("2121323")}>打开</a>
+                <h5><a onClick={()=>console.log("asdf")}>克隆</a></h5>
                 <h3>Recent</h3>
                 {[1,2,3,4,5,6].map(item => <a key={item}>{item}</a>)}
                 <h3>Help</h3>

@@ -9,8 +9,9 @@ import './public/css/font.css'
 import './public/css/antd.min.css'
 import command from '@/components/command'
 
-command.initCommand()
+command.init()
 
+// console.log(command)
 Mousetrap.bind('command+shift+k', function() {
     
 });

@@ -1,63 +1,33 @@
 import * as React from 'react'
-import { Input } from 'antd';
-import command from './command'
+import { createPortal, render } from 'react-dom'
+import { fromEventPattern, fromEvent } from 'rxjs'
+import Events from './Events'
+import CommandWindow from './CommandWindow'
 
 
-let notification: any = null;
+let events = new Events()
 
-export const initCommand = () : void => {
-    // command.newInstance( {}, ins => notification = ins)
 
+export const init = () : void => {
+    render( <CommandWindow events={events} />, document.getElementById('command') );
 }
 
-export const registeredCommand = () => {
+export const registered = () => {
     
 }
 
 export const openPanel = (command?: string) => {
-    notification.notice({
-        content: <span>simple show {String(Date.now()).slice(-5)}</span>,
-        onClose() {
-          console.log('simple close');
-        },
-      })
+    events.emit('openPanel', command)
+    console.log(command)
 }
 
-export const executedCommand = () => {
+export const exec = () => {
     
 }
 
-
-
 export default {
-    initCommand,
-    registeredCommand,
+    init,
     openPanel,
-    executedCommand
+    exec,
+    registered
 }
-
-
-// () => {
-
-//     return <div style={{
-//         position: 'absolute',
-//         top: '30px',
-//         margin: 'auto',
-//         right: 0,
-//         left: 0,
-//         width: '600px',
-//         padding: '5px',
-//         background: 'rgba(50,50,50,.1)'
-//     }}>
-//         <Input size="small" style={{
-//         background: 'rgba(50,50,50,.1)'}}
-//         onPressEnter={()=>{}}></Input>
-//         <div>
-
-//         </div>
-
-
-
-        
-//     </div>
-// }

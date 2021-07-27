@@ -2,14 +2,14 @@ import * as React from 'react'
 import { useState } from 'react'
 import { render } from 'react-dom'
 import BasicLayout from '@/layouts/BasicLayout'
-import Http from './http'
+// import Http from './http'
 
 const App = () => {
   // const [ component, setComponent ] = useState(Http)
 
   return (
     <BasicLayout>
-      <Http />
+      {/* <Http /> */}
     </BasicLayout>
   );
 };
