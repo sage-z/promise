@@ -1,9 +1,7 @@
-
-const { contextBridge, ipcRenderer } = require('electron');
-const fs = require("fs")
-import local from './local'
+// 只做通讯传输，不做业务处理
+import { contextBridge, ipcRenderer } from 'electron';
 import repository from './repository'
-// import { Books } from 'main/store'
+
 let cache = {
   path: ""
 }

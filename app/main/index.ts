@@ -1,7 +1,8 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow,  } from 'electron';
 import Store = require("electron-store");
 import { createWindow } from './createWindow'
 import './bootstrap'
+
 
 if (require('electron-squirrel-startup')) {
   app.quit();

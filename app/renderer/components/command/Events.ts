@@ -12,14 +12,10 @@ class Events {
 
     addEventListener(name:string, listener: Function){
         if (!this.listeners.has(name)) this.listeners.set(name, [])
-        // console.log('this.listeners.get(name)', this.listeners.get(name))
         const listeners = [...this.listeners.get(name), listener]
-        // console.log(listeners)
         this.listeners.set(name, listeners)
-        // console.log(name,this.listeners.get(name))
     }
     removeEventListener(name:string, listener?: Function){
-        // console.log('removeEventListener', name)
         if(listener){
             const listeners = this.listeners.get(name).filter(l => l !== listener)
             this.listeners.set(name, listeners)
@@ -28,7 +24,6 @@ class Events {
         }
     }
     emit(name:string, ...arg){
-        // console.log('name', name, this.listeners.get(name))
         this.listeners.get(name).forEach(f => f(...arg))
     }
 }

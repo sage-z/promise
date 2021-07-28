@@ -1,6 +1,8 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, dialog } from 'electron';
 import {is} from 'electron-util';
 import Store = require("electron-store");
+import { pathToFileURL } from 'url';
+import { resolve } from 'path'
 
 export const createWindow = (name?: string): BrowserWindow => {
     const win = new BrowserWindow({
@@ -36,6 +38,7 @@ export const createWindow = (name?: string): BrowserWindow => {
       }
 
       win.webContents.send('getProjectName', name);
+
     })
 
     win.on('closed', ()=>{

@@ -1,4 +1,5 @@
 // import { initApiServer } from '../api/server';
+import './service';
 import Store = require('electron-store');
 
 (async () => {
