@@ -40,7 +40,7 @@ class Commands extends Map<string, Map<string, Command>> {
 
         if (!this.get(l[0]).has(l[1])) throw "There is no such order"
 
-        this.get(l[0]).get(l[1]).action(l.slice(2))
+        this.get(l[0]).get(l[1]).action(...l.slice(2))
         
         
     }

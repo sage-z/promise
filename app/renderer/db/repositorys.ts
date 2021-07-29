@@ -1,5 +1,5 @@
 export default {
-    title: 'article schema',
+    title: 'repositorys schema',
     description: 'describes a simple book',
     version: 0,
     type: 'object',
@@ -8,12 +8,12 @@ export default {
             type: 'string',
             primary: true
         },
-        color: {
+        path: {
             type: 'string'
         },
         open: {
             type: 'number'
         }
     },
-    required: []
+    required: ['path']
 };

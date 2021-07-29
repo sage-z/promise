@@ -1,4 +1,4 @@
-import { getDatabase } from '../../db';
+
 import renderApp from './App';
 
 interface Module {
@@ -14,9 +14,6 @@ interface Module {
 export default async (name) => {
     // 初始化配置
 
-    // 初始化数据库
-
-    await getDatabase( name );
 
     // await addModules()
     // 初始化插件

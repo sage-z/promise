@@ -7,7 +7,6 @@ import { useRef, useState, useEffect } from "react";
 import useDraggable from "@/hooks/useDraggable";
 import styles from "./index.scss";
 import { cx, css } from "@emotion/css";
-import { queryBooks } from "@/service/books";
 import Sidebar from './Sidebar'
 import Tabpane from './Tabpane'
 import { fromEvent } from 'rxjs'

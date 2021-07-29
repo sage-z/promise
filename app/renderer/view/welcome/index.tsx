@@ -1,11 +1,31 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { render } from 'react-dom'
 import EmptyLayout from '@/layouts/EmptyLayout'
 import banner from './youknow.jpg'
 import command from '@/components/command'
+import { getDatabase } from '@/db'
 
 const App = () => {
+
+  useEffect(()=>{
+    // const fetchData = async () => {
+    //   const data = await getData();
+    //   setData(data);
+    // };
+    // fetchData();
+    getDatabase()
+    .then(db => {
+      db.repositorys
+      .find()
+      .$ // <- returns observable of query
+      .subscribe( docs => {
+        console.log(docs)
+      });
+
+    })
+  
+  }, [])
 
   return (
     <EmptyLayout title="welcome">
@@ -28,6 +48,7 @@ const App = () => {
             <div style={{flex: 1}}>
                 <img width="100%" src={banner}></img>
                 <h3>学习</h3>
+                <a href="https://semver.org/lang/zh-CN/">版本</a>
 
             </div>
         </div>

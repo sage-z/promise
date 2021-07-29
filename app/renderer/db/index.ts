@@ -16,7 +16,8 @@ import { RxDBQueryBuilderPlugin } from 'rxdb/plugins/query-builder';
 addRxPlugin(RxDBQueryBuilderPlugin);
 
 
-import requestSchema from './request'
+import requestSchema from './requests'
+import repositorySchema from './repositorys'
 
 
 // dev
@@ -29,17 +30,18 @@ addRxPlugin(RxDBDevModePlugin)
 
 
 
-async function createDatabase(name: string) {
+async function createDatabase() {
     // then we also need the leader election
 
     const db = await createRxDatabase({
-        name: 'promise_' + name,
+        name: 'promise',
         adapter: 'idb',
         password: 'myLongAndStupidPassword'
     });
 
     await db.addCollections({
-        request: { schema: requestSchema }
+        requests: { schema: requestSchema },
+        repositorys: { schema: repositorySchema }
     });
     return db;
 }
@@ -47,7 +49,7 @@ async function createDatabase(name: string) {
 
 
 let _getDatabase: Promise<RxDatabase>;
-export function getDatabase(name?: string) {
-    if (!_getDatabase) _getDatabase = createDatabase(name);
+export function getDatabase() {
+    if (!_getDatabase) _getDatabase = createDatabase();
     return _getDatabase;
 }

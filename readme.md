@@ -28,27 +28,27 @@ no server
 
 ##  参考
 ### UI
-Photon http://photonkit.com/
-antd https://ant.design/
-Material UI https://github.com/material-components
+Photon http://photonkit.com/<br />
+antd https://ant.design/<br />
+Material UI https://github.com/material-components<br />
 ### 标准
-openapi3-ts https://github.com/metadevpro/openapi3-ts
-OpenAPI-Specification https://github.com/OAI/OpenAPI-Specification
-json-schema http://json-schema.org/
+openapi3-ts https://github.com/metadevpro/openapi3-ts<br />
+OpenAPI-Specification https://github.com/OAI/OpenAPI-Specification<br />
+json-schema http://json-schema.org/<br />
 ### 产品
-YApi https://github.com/YMFE/yapi
-eolinker https://www.eolinker.com
-Postman https://www.getpostman.com
-Paw https://paw.cloud
-redoc https://github.com/Redocly/redoc
-apiDoc https://apidocjs.com
-Apifox https://www.apifox.cn
+YApi https://github.com/YMFE/yapi<br />
+eolinker https://www.eolinker.com<br />
+Postman https://www.getpostman.com<br />
+Paw https://paw.cloud<br />
+redoc https://github.com/Redocly/redoc<br />
+apiDoc https://apidocjs.com<br />
+Apifox https://www.apifox.cn<br />
 
 ## 捐助
 
 ### 加入开发
-
+pull requests
 ### 帮助宣传及转载
 
 ### 现金捐助
-捐助的钱将被用来上Mac App Storre
+捐助的钱将被用来上架 App Storre 以及加速 issues 的处理。
