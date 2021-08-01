@@ -8,6 +8,8 @@ import { getDatabase } from '@/db'
 
 const App = () => {
 
+
+    const a = aaa()
   useEffect(()=>{
     // const fetchData = async () => {
     //   const data = await getData();
@@ -37,7 +39,7 @@ const App = () => {
             <div style={{flex: 1}}>
                 <h1>Promise</h1>
 
-                <h3>Start</h3>
+                <h3>Start {a}</h3>
                 <h5><a onClick={()=>command.openPanel("repository create ")}>新建</a></h5>
                 <a onClick={()=>console.log("2121323")}>打开</a>
                 <h5><a onClick={()=>console.log("asdf")}>克隆</a></h5>
@@ -58,4 +60,21 @@ const App = () => {
 
 export default function () {
   render(<App />, document.getElementById("root"));
+}
+
+const aaa = () => {
+  const [a, as] =useState('nullaaa')
+  useEffect(
+    () => {
+      let b = 0
+      setInterval(()=>{
+        b++
+        console.log(b)
+        as( b + "")
+      }, 1000)
+    },
+    [],
+  );
+
+  return a
 }
