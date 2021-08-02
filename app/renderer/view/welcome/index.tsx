@@ -9,25 +9,7 @@ import { getDatabase } from '@/db'
 const App = () => {
 
 
-    const a = aaa()
-  useEffect(()=>{
-    // const fetchData = async () => {
-    //   const data = await getData();
-    //   setData(data);
-    // };
-    // fetchData();
-    getDatabase()
-    .then(db => {
-      db.repositorys
-      .find()
-      .$ // <- returns observable of query
-      .subscribe( docs => {
-        console.log(docs)
-      });
-
-    })
-  
-  }, [])
+    const repositorys = queryRepositorys()
 
   return (
     <EmptyLayout title="welcome">
@@ -39,12 +21,12 @@ const App = () => {
             <div style={{flex: 1}}>
                 <h1>Promise</h1>
 
-                <h3>Start {a}</h3>
+                <h3>Start</h3>
                 <h5><a onClick={()=>command.openPanel("repository create ")}>新建</a></h5>
                 <a onClick={()=>console.log("2121323")}>打开</a>
                 <h5><a onClick={()=>console.log("asdf")}>克隆</a></h5>
                 <h3>Recent</h3>
-                {[1,2,3,4,5,6].map(item => <a key={item}>{item}</a>)}
+                {repositorys.map(item => <a key={item}>{item}</a>)}
                 <h3>Help</h3>
             </div>
             <div style={{flex: 1}}>
@@ -62,19 +44,21 @@ export default function () {
   render(<App />, document.getElementById("root"));
 }
 
-const aaa = () => {
-  const [a, as] =useState('nullaaa')
-  useEffect(
-    () => {
-      let b = 0
-      setInterval(()=>{
-        b++
-        console.log(b)
-        as( b + "")
-      }, 1000)
-    },
-    [],
-  );
+const queryRepositorys = () => {
+  const [ repositorys, setRepositorys] =useState([])
 
-  return a
+  useEffect(()=>{
+    getDatabase()
+    .then(db => {
+      db.repositorys
+      .find()
+      .$ // <- returns observable of query
+      .subscribe( docs => {
+        setRepositorys(docs)
+      });
+    })
+  
+  }, [])
+
+  return repositorys
 }
