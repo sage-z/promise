@@ -26,7 +26,7 @@ const App = () => {
                 <a onClick={()=>console.log("2121323")}>打开</a>
                 <h5><a onClick={()=>console.log("asdf")}>克隆</a></h5>
                 <h3>Recent</h3>
-                {repositorys.map(item => <a key={item}>{item}</a>)}
+                {repositorys.map(item => <div><a key={item}>{item}</a></div>)}
                 <h3>Help</h3>
             </div>
             <div style={{flex: 1}}>
