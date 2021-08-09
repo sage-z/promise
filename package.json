@@ -89,7 +89,8 @@
     "sass": "^1.32.0",
     "slate": "^0.63.0",
     "slate-history": "^0.62.0",
-    "slate-react": "^0.63.0"
+    "slate-react": "^0.63.0",
+    "uuid": "^8.3.2"
   },
   "config": {
     "forge": {
