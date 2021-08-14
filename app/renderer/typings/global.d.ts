@@ -1,6 +1,8 @@
 import {IpcRenderer, Clipboard, ContextBridge, CrashReporter, DesktopCapturer, NativeImage, Shell, WebFrame, Deprecate} from 'electron';
  
 declare global {
+  declare var MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY:string
+  declare var MAIN_WINDOW_WEBPACK_ENTRY:string
   // interface Window {
   //   clipboard: Clipboard
   //   contextBridge: ContextBridge
