@@ -27,7 +27,6 @@ export const createWindow = (name?: string): BrowserWindow => {
     //     win.show();
     // })
 
-
   const store = new Store({ name:'cache', encryptionKey:'promise'})
   const activeWindow : string[] = store.get('activeWindow', []) as string[]
   
