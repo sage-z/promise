@@ -43,10 +43,6 @@ export const createWindow = (name?: string): BrowserWindow => {
     win.on('closed', ()=>{
       store.set('activeWindow', activeWindow.filter(item => item !== name))
     })
-
-    
-
-    
     
     if (is.development){
       win.webContents.openDevTools();
