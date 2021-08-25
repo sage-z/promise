@@ -37,7 +37,6 @@ export const createWindow = (name?: string): BrowserWindow => {
       }
 
       win.webContents.send('getProjectName', name);
-
     })
 
     win.on('closed', ()=>{
