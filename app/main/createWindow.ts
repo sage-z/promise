@@ -35,7 +35,6 @@ export const createWindow = (name?: string): BrowserWindow => {
         activeWindow.push(name)
         store.set('activeWindow', activeWindow)
       }
-
       win.webContents.send('getProjectName', name);
     })
 
