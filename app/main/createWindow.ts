@@ -46,4 +46,4 @@ export const createWindow = (name?: string): BrowserWindow => {
       win.webContents.openDevTools();
     }
     return win
-  };
+};
