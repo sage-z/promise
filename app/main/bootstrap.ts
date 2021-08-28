@@ -4,7 +4,6 @@ import Store = require('electron-store');
 
 (async () => {
     try {
-        // initApiServer()
         Store.initRenderer()
     } catch (error) {
         console.log('error', error)
