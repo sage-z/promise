@@ -5,8 +5,6 @@ import { resolve, join } from 'path'
 import http from 'isomorphic-git/http/node'
 import * as fs from 'fs'
 
-
-
 export default {
     create : (name) => {
         let dir = resolve(app.getPath('userData'), 'repository', name )
