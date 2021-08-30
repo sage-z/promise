@@ -19,7 +19,6 @@ addRxPlugin(RxDBQueryBuilderPlugin);
 import requestSchema from './requests'
 import repositorySchema from './repositorys'
 
-
 // dev
 
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode'
