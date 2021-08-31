@@ -15,7 +15,6 @@ addRxPlugin(RxDBEncryptionPlugin);
 import { RxDBQueryBuilderPlugin } from 'rxdb/plugins/query-builder';
 addRxPlugin(RxDBQueryBuilderPlugin);
 
-
 import requestSchema from './requests'
 import repositorySchema from './repositorys'
 
