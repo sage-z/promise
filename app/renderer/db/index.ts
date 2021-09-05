@@ -42,7 +42,6 @@ async function createDatabase() {
     return db;
 }
 
-
 let _getDatabase: Promise<RxDatabase>;
 export function getDatabase() {
     if (!_getDatabase) _getDatabase = createDatabase();
