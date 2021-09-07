@@ -24,7 +24,6 @@ import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode'
 addRxPlugin(RxDBDevModePlugin)
 // addRxPlugin(RxDBValidatePlugin)
 
-
 async function createDatabase() {
     // then we also need the leader election
 
