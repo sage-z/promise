@@ -45,4 +45,3 @@ export function getDatabase() {
     if (!_getDatabase) _getDatabase = createDatabase();
     return _getDatabase;
 }
-
