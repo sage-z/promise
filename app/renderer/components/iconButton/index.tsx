@@ -6,7 +6,7 @@ interface BaseProps {
     [key: string]: unknown
   }
 
-  type OrNull<T> = T | null
+type OrNull<T> = T | null
 
 export const Button = forwardRef(
     (
