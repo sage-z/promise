@@ -17,7 +17,7 @@ export function getEventPosition(container = document.body, event:any) {
     return position;
   }
   
-  export function removeClassName(el:any, className:any) {
+export function removeClassName(el:any, className:any) {
     if (el.classList) {
       el.classList.remove(className);
     } else {
