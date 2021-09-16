@@ -11,7 +11,6 @@ import './public/css/antd.min.css'
 import command from '@/components/command'
 
 command.init()
-
 // localStorage.setItem('allRepositorys', )
 // console.log(command)
 Mousetrap.bind('command+shift+k', function() {
