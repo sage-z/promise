@@ -32,7 +32,7 @@ export function clearClassName(el:any) {
     el.className = '';
   }
   
-  export const on = (target:any, event:any, ...args:any[]) =>
+export const on = (target:any, event:any, ...args:any[]) =>
     target.addEventListener(event, ...args);
   
   export const off = (target:any, event:any, ...args:any[]) =>
