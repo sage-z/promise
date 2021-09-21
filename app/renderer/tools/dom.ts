@@ -30,7 +30,7 @@ export function removeClassName(el:any, className:any) {
   
 export function clearClassName(el:any) {
     el.className = '';
-  }
+}
   
 export const on = (target:any, event:any, ...args:any[]) =>
     target.addEventListener(event, ...args);
