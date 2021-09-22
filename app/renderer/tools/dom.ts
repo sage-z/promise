@@ -26,7 +26,7 @@ export function removeClassName(el:any, className:any) {
         '',
       );
     }
-  }
+}
   
 export function clearClassName(el:any) {
     el.className = '';
