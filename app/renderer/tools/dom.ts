@@ -15,7 +15,7 @@ export function getEventPosition(container = document.body, event:any) {
       y: event.clientY - rect.top,
     };
     return position;
-  }
+}
   
 export function removeClassName(el:any, className:any) {
     if (el.classList) {
