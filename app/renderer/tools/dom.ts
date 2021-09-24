@@ -6,7 +6,7 @@ export function addClassName(el:any, className:any) {
         el.className += ` ${className}`;
       }
     }
-  }
+}
   
 export function getEventPosition(container = document.body, event:any) {
     const rect = container.getBoundingClientRect();
