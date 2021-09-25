@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { render } from 'react-dom'
-
 import renderApp from './view/app'
 import renderWelcome from './view/welcome'
 import Mousetrap from 'mousetrap';
