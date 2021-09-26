@@ -13,7 +13,6 @@ command.init()
 // localStorage.setItem('allRepositorys', )
 // console.log(command)
 Mousetrap.bind('command+shift+k', function() {
-    
 });
 
 (async function run() {
