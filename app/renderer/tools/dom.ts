@@ -7,7 +7,7 @@ export function addClassName(el:any, className:any) {
       }
     }
 }
-  
+
 export function getEventPosition(container = document.body, event:any) {
     const rect = container.getBoundingClientRect();
     const position = {
