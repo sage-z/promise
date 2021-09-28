@@ -6,6 +6,7 @@ import './bootstrap'
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
+
 const windows = [];
 
 app.on('ready', async ()=>{
