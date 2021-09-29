@@ -19,7 +19,6 @@ app.on('ready', async ()=>{
       let win  = createWindow(element)
       windows.push(win);
     }
-
   } else{
     let win  = createWindow()
     windows.push(win);
