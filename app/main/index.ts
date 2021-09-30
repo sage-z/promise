@@ -9,6 +9,7 @@ if (require('electron-squirrel-startup')) {
 
 const windows = [];
 
+
 app.on('ready', async ()=>{
   const store = new Store({ name:'cache', encryptionKey:'promise'})
   const activeWindow : string[] = store.get('activeWindow', []) as string[]
