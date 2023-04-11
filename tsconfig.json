@@ -1,26 +1,23 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "jsx": "react",
-    "module": "commonjs",
-    "target":"ES2016",
     "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "outDir": "dist",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": false,
-    "suppressImplicitAnyIndexErrors": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
     "paths": {
-      "@/*": ["app/renderer/*"],
-      "main/*": ["app/main/*"],
-      "libs/*": ["app/libs/*"],
-      "*": ["node_modules/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": ["app/**/*"],
-  "exclude": ["app/renderer/components/**/__tests__/*"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
